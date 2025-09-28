@@ -27,7 +27,7 @@ class Chunk:
         return f"Chunk(lines={self.size})"
 
 
-def get_file_parts(chunk_line_count: int = 100):
+def get_file_parts(chunk_line_count: int = 10000):
     with open("../data/measurements.txt", 'rt') as f:
         chunk = []
 
@@ -60,6 +60,7 @@ def get_places(chunk: Chunk):
 
 def execute():
     places = defaultdict(Place)
+
     for chunk in get_file_parts():
         result = get_places(chunk)
         for name, r in result.items():
